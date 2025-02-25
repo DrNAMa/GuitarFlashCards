@@ -1,0 +1,340 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <StartupObject>Sub Main</StartupObject>
+    <UseWindowsForms>true</UseWindowsForms>
+    <MyType>WindowsForms</MyType>
+    <ApplicationIcon>guitar_wallpaper_preview_jW4_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="App.config" />
+    <None Remove="BassNotePics\A1.png" />
+    <None Remove="BassNotePics\A2.png" />
+    <None Remove="BassNotePics\A3.png" />
+    <None Remove="BassNotePics\A4.png" />
+    <None Remove="BassNotePics\AA1.png" />
+    <None Remove="BassNotePics\AA2.png" />
+    <None Remove="BassNotePics\AA3.png" />
+    <None Remove="BassNotePics\AA4.png" />
+    <None Remove="BassNotePics\B1.png" />
+    <None Remove="BassNotePics\B2.png" />
+    <None Remove="BassNotePics\B3.png" />
+    <None Remove="BassNotePics\BB1.png" />
+    <None Remove="BassNotePics\BB2.png" />
+    <None Remove="BassNotePics\BB3.png" />
+    <None Remove="BassNotePics\C1.png" />
+    <None Remove="BassNotePics\C2.png" />
+    <None Remove="BassNotePics\C3.png" />
+    <None Remove="BassNotePics\CC1.png" />
+    <None Remove="BassNotePics\CC2.png" />
+    <None Remove="BassNotePics\CC3.png" />
+    <None Remove="BassNotePics\D1.png" />
+    <None Remove="BassNotePics\D2.png" />
+    <None Remove="BassNotePics\D3.png" />
+    <None Remove="BassNotePics\DD1.png" />
+    <None Remove="BassNotePics\DD2.png" />
+    <None Remove="BassNotePics\DD3.png" />
+    <None Remove="BassNotePics\E1.png" />
+    <None Remove="BassNotePics\E2.png" />
+    <None Remove="BassNotePics\E3.png" />
+    <None Remove="BassNotePics\E4.png" />
+    <None Remove="BassNotePics\EE1.png" />
+    <None Remove="BassNotePics\EE2.png" />
+    <None Remove="BassNotePics\EE3.png" />
+    <None Remove="BassNotePics\F1.png" />
+    <None Remove="BassNotePics\F2.png" />
+    <None Remove="BassNotePics\F3.png" />
+    <None Remove="BassNotePics\F4.png" />
+    <None Remove="BassNotePics\FF1.png" />
+    <None Remove="BassNotePics\FF2.png" />
+    <None Remove="BassNotePics\FF3.png" />
+    <None Remove="BassNotePics\G1.png" />
+    <None Remove="BassNotePics\G2.png" />
+    <None Remove="BassNotePics\G3.png" />
+    <None Remove="BassNotePics\G4.png" />
+    <None Remove="BassNotePics\GG1.png" />
+    <None Remove="BassNotePics\GG2.png" />
+    <None Remove="BassNotePics\GG3.png" />
+    <None Remove="BassNotePics\GG4.png" />
+    <None Remove="CheatBassNotePics\AAS.png" />
+    <None Remove="CheatBassNotePics\AS.png" />
+    <None Remove="CheatBassNotePics\BBS.png" />
+    <None Remove="CheatBassNotePics\BS.png" />
+    <None Remove="CheatBassNotePics\CCS.png" />
+    <None Remove="CheatBassNotePics\CS.png" />
+    <None Remove="CheatBassNotePics\DDS.png" />
+    <None Remove="CheatBassNotePics\DS.png" />
+    <None Remove="CheatBassNotePics\EES.png" />
+    <None Remove="CheatBassNotePics\ES.png" />
+    <None Remove="CheatBassNotePics\FFS.png" />
+    <None Remove="CheatBassNotePics\FS.png" />
+    <None Remove="CheatBassNotePics\GGS.png" />
+    <None Remove="CheatBassNotePics\GS.png" />
+    <None Remove="CheatNotePics\AS.png" />
+    <None Remove="CheatNotePics\BS.png" />
+    <None Remove="CheatNotePics\CS.png" />
+    <None Remove="CheatNotePics\DS.png" />
+    <None Remove="CheatNotePics\ES.png" />
+    <None Remove="CheatNotePics\FS.png" />
+    <None Remove="CheatNotePics\GS.png" />
+    <None Remove="NotePics\A1.png" />
+    <None Remove="NotePics\A2.png" />
+    <None Remove="NotePics\A3.png" />
+    <None Remove="NotePics\B1.png" />
+    <None Remove="NotePics\B2.png" />
+    <None Remove="NotePics\B3.png" />
+    <None Remove="NotePics\C1.png" />
+    <None Remove="NotePics\C2.png" />
+    <None Remove="NotePics\C3.png" />
+    <None Remove="NotePics\D1.png" />
+    <None Remove="NotePics\D2.png" />
+    <None Remove="NotePics\D3.png" />
+    <None Remove="NotePics\E1.png" />
+    <None Remove="NotePics\E2.png" />
+    <None Remove="NotePics\E3.png" />
+    <None Remove="NotePics\E4.png" />
+    <None Remove="NotePics\F1.png" />
+    <None Remove="NotePics\F2.png" />
+    <None Remove="NotePics\F3.png" />
+    <None Remove="NotePics\F4.png" />
+    <None Remove="NotePics\G1.png" />
+    <None Remove="NotePics\G2.png" />
+    <None Remove="NotePics\G3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="guitar_wallpaper_preview_jW4_icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="App.config" />
+    <EmbeddedResource Include="BassNotePics\AA1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\AA2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\AA3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\AA4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\BB1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\BB2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\BB3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\CC1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\CC2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\CC3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\DD1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\DD2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\DD3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\EE1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\EE2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\EE3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\FF1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\FF2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\FF3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\GG1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\GG2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\GG3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BassNotePics\GG4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatBassNotePics\AAS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatBassNotePics\BBS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatBassNotePics\CCS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatBassNotePics\DDS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatBassNotePics\EES.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatBassNotePics\FFS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatBassNotePics\GGS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatNotePics\AS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatNotePics\BS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatNotePics\CS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatNotePics\DS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatNotePics\ES.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatNotePics\FS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheatNotePics\GS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\A1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\A2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\A3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\B1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\B2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\B3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\C1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\C2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\C3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\D1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\D2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\D3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\E1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\E2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\E3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\E4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\F1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\F2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\F3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\F4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\G1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\G2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePics\G3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="My Project\Application.Designer.vb">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Update="My Project\Resources.Designer.vb">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="My Project\Settings.Designer.vb">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Update="My Project\Settings.settings">
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="My Project\Resources.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
