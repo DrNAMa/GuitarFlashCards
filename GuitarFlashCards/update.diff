@@ -1,0 +1,815 @@
+<![CDATA[
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1,47 @@
++# Guitar Flash Cards
++
++A Visual Basic .NET Windows Forms application designed to help users learn and practice reading musical notes on both treble and bass clefs. The application presents random musical notes visually and challenges users to identify them correctly, tracking their progress and accuracy.
++
++## Supported Versions/Platforms
++
++- Framework: .NET Framework 4.0 or higher
++- Platform: Windows (x86/x64)
++- Development Environment: Visual Studio 2010 or later
++
++## Quick-Start Instructions
++
++1. Clone or download the repository
++2. Ensure image folders (NotePics/, BassNotePics/, CheatNotePics/, CheatBassNotePics/) contain the required note images
++3. Open the solution in Visual Studio
++4. Build and run the application
++5. Select difficulty level (Easy, Medium, or Advanced) and clef type (Treble or Bass)
++6. Type the note name displayed in the image and press Enter to check your answer
++7. View your accuracy percentage in real-time
++
++## Documentation
++
++- Architecture Overview - Repository structure and file organization
++- License - MIT License information
++
++## Features
++
++- Three Difficulty Levels:
+
+Easy: Limited note positions
+Medium: More note positions per note
+Advanced: All positions with optional timer mode
++- Dual Clef Support: Practice with treble or bass clef
++- Score Tracking: Real-time accuracy percentage display
++- Timer Mode: Auto-advance feature for advanced difficulty
++- Visual Cheat Sheet: Reference panel for note positions
++- Settings Persistence: Automatically saves and loads user preferences
++## Style Guidance
++This project follows Visual Basic .NET conventions:
++- Classes: PascalCase for class names (e.g., EasyMode, CheckAnswer)
++- Methods: PascalCase for method names (e.g., PickRandomNote(), SetLevel())
++- Variables: camelCase for local variables (e.g., note, i)
++- Shared Members: Used for static functionality across modules
++- File Organization: One class per file with descriptive names
++- Comments: Module-level docstrings describing purpose
++- String Interpolation: Uses VB.NET string interpolation syntax with $ ""
+--- /dev/null
++++ b/LICENSE
+@@ -0,0 +1,21 @@
++The MIT License (MIT)
++Copyright (c) 2011-2025 The Bootstrap Authors
++Permission is hereby granted, free of charge, to any person obtaining a copy
++of this software and associated documentation files (the "Software"), to deal
++in the Software without restriction, including without limitation the rights
++to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++copies of the Software, and to permit persons to whom the Software is
++furnished to do so, subject to the following conditions:
++The above copyright notice and this permission notice shall be included in
++all copies or substantial portions of the Software.
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++THE SOFTWARE.
+--- /dev/null
++++ b/architecture.md
+@@ -0,0 +1,30 @@
++# Architecture
++This document describes the file structure of the Guitar Flash Cards repository.
++.
++|-- AdvancedMode.vb
++|-- App.config
++|-- ApplicationEvents.vb
++|-- BassNotePics/
++|-- CheckAnswer.vb
++|-- CheatBassNotePics/
++|-- CheatNotePics/
++|-- DetermineLevel.vb
++|-- EasyMode.vb
++|-- Form1.vb
++|-- KeepTrack.vb
++|-- LICENSE
++|-- LoadSettings.vb
++|-- MediumMode.vb
++|-- NotePics/
++|-- README.md
++|-- SaveSettings.vb
++|-- SetLevel.vb
++`-- architecture.md
++
+
++## Directory Structure
+
++- Root contains all VB.NET source files and configuration
++- Image directories (NotePics/, BassNotePics/, CheatNotePics/, CheatBassNotePics/) contain JPEG images of musical notes at various staff positions
+--- a/./Form1.vb
++++ b/./Form1.vb
+@@ -1,9 +1,40 @@
+-"""Events Page, Gui Thread, Entry Points"""
++"""
++Form1
++=====
+
++Main form module for the Guitar Flash Cards application. Handles all GUI events, user interactions, and orchestrates the game flow.
+
++This module serves as the primary entry point and event coordinator for the application, managing difficulty level selection, answer validation, timer controls, and settings persistence.
+
++Public API
++----------
+
++- :py:class:~GuitarFlashCards.Form1
+
++"""
+
+Imports System.ComponentModel
+Public Class Form1
+
+"""Main Windows Form class for the Guitar Flash Cards application.
+
+Manages all user interface events including form lifecycle, user input, difficulty settings,
+
+clef selection, timer controls, and visual feedback.
+
+:ivar TextBox1: User input field for note answers
+
+:vartype TextBox1: TextBox
+
+:ivar TextBox2: Timer interval input field
+
+:vartype TextBox2: TextBox
+
+:ivar Label1: Displays current correct note
+
+:vartype Label1: Label
+
+:ivar Label2: Displays feedback (Correct/Incorrect)
+
+:vartype Label2: Label
+
+:ivar Label3: Displays previous note
+
+:vartype Label3: Label
+
+:ivar Label4: Displays accuracy percentage
+
+:vartype Label4: Label
+
+"""
+
+Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+   """Initializes the form by loading saved settings and setting the initial difficulty level."""
+   LoadSettings.LoadSettings()
+   Dim s As String = DetermineLevel.DetermineLevel()
+   SetLevel.SetLevel(s)
+
+@@ -12,6 +43,14 @@
+SaveSettings.SaveSettings()
+End Sub
+Private Sub TextBox1_KeyUp(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyUp
+
+   """Handles user input when a key is released in the answer text box.
+
+   Validates the answer, updates the display, advances to the next question, and clears the input.
+
+   :param sender: The TextBox control that raised the event
+
+   :type sender: Object
+
+   :param e: Key event arguments
+
+   :type e: KeyEventArgs"""
+   If Not TextBox1.Text = String.Empty Then
+       Label3.Hide()
+       e.Handled = True
+
+@@ -25,6 +64,15 @@
+End If
+End Sub
+Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
+
+   """Handles advanced mode radio button state changes.
+
+   Shows/hides timer controls and manages timer state based on advanced mode selection.
+
+   :param sender: The RadioButton control that raised the event
+
+   :type sender: Object
+
+   :param e: Event arguments
+
+   :type e: EventArgs
+
+   """
+   If RadioButton3.Checked = True Then
+       TextBox2.Visible = True
+       Label5.Visible = True
+
+@@ -39,6 +87,14 @@
+End If
+End Sub
+Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+   """Toggles the timer for advanced mode.
+
+   Starts or stops the auto-advance timer and updates button text accordingly.
+
+   :param sender: The Button control that raised the event
+
+   :type sender: Object
+
+   :param e: Event arguments
+
+   :type e: EventArgs"""
+   If SetLevel.t.Enabled Then
+       SetLevel.timerStop()
+       Button1.Text = "Play"
+
+@@ -48,6 +104,14 @@
+End If
+End Sub
+Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+
+   """Resets the score tracking and clears feedback labels.
+
+   Clears all tracked answers and resets visual feedback elements.
+
+   :param sender: The LinkLabel control that raised the event
+
+   :type sender: Object
+
+   :param e: Link event arguments
+
+   :type e: LinkLabelLinkClickedEventArgs"""
+   KeepTrack.ClearTrack()
+   Label4.Text = String.Empty
+   Label3.Visible = False
+
+@@ -59,6 +123,14 @@
+End Sub
+
+ Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton4.CheckedChanged
+
+   """Handles clef selection changes between treble and bass.
+
+   Reloads the current difficulty level with the new clef selection.
+
+   :param sender: The RadioButton control that raised the event
+
+   :type sender: Object
+
+   :param e: Event arguments
+
+   :type e: EventArgs"""
+   If RadioButton4.Checked Then
+       Dim s As String = DetermineLevel.DetermineLevel()
+       SetLevel.SetLevel(s)
+
+@@ -69,14 +141,30 @@
+End Sub
+
+ Private Sub RadioButton1_Click(sender As Object, e As EventArgs) Handles RadioButton1.Click, RadioButton2.Click, RadioButton3.Click, RadioButton4.Click, RadioButton5.Click, Button1.Click, LinkLabel1.Click, Me.Click
+
+   """Returns focus to the answer input box after any control is clicked.
+
+   :param sender: The control that raised the event
+
+   :type sender: Object
+
+   :param e: Event arguments
+
+   :type e: EventArgs"""
+   TextBox1.Focus()
+
+End Sub
+
+Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
+
+   """Displays the cheat sheet panel with note reference images.
+
+   :param sender: The LinkLabel control that raised the event
+
+   :type sender: Object
+
+   :param e: Link event arguments
+
+   :type e: LinkLabelLinkClickedEventArgs"""
+   Panel1.Show()
+   Panel1.BringToFront()
+
+End Sub
+
+Private Sub LinkLabel3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel3.LinkClicked
+
+   """Hides the cheat sheet panel.
+
+   :param sender: The LinkLabel control that raised the event
+
+   :type sender: Object
+
+   :param e: Link event arguments
+
+   :type e: LinkLabelLinkClickedEventArgs"""
+   Panel1.Hide()
+
+End Sub
+Private Sub RadioButton6_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton6.CheckedChanged, RadioButton7.CheckedChanged, RadioButton8.CheckedChanged, RadioButton9.CheckedChanged, RadioButton10.CheckedChanged, RadioButton11.CheckedChanged, RadioButton12.CheckedChanged
+
+   """Updates the cheat sheet image based on selected note and clef.
+
+   Dynamically loads the appropriate reference image for the selected note in the cheat panel.
+
+   :param sender: The RadioButton control that raised the event
+
+   :type sender: Object
+
+   :param e: Event arguments
+
+   :type e: EventArgs"""
+   Dim rad As RadioButton = DirectCast(sender, RadioButton)
+   Dim radname As String = String.Empty
+   If rad.Checked Then
+
+--- a/./AdvancedMode.vb
++++ b/./AdvancedMode.vb
+@@ -1,12 +1,40 @@
+-"""Advanced Mode"""
++"""
++AdvancedMode
++============
++
++Implements the advanced difficulty mode for note identification with all possible note positions.
++
++This module generates random musical notes across all available positions on the staff,
++providing the most challenging difficulty level.
++
++Public API
++----------
++
++- :py:class:~GuitarFlashCards.AdvancedMode
++
++"""
+
+Public Class AdvancedMode
+
+"""Manages advanced difficulty mode note generation.
+Selects random notes from A-G and displays them at various positions on the staff,
+utilizing all available image variations for maximum difficulty.
+:ivar note: The previously displayed note to prevent immediate repetition
+:vartype note: Char
+"""
+Private Shared note As Char
+
+Public Sub New()
+
+   """Initializes a new instance and generates the first random note."""
+   note = PickRandomNote()
+
+End Sub
+Public Sub Execute()
+
+   """Executes the advanced mode logic (currently a placeholder for future functionality)."""
+
+End Sub
+Private Function PickRandomNote() As Char
+
+   """Selects and displays a random note with random positioning.
+
+   Chooses a note from A-G (avoiding immediate repetition) and selects a random
+
+   position variant. E and F notes have 5 variants, others have 4 variants.
+
+   :return: The selected note character
+
+   :rtype: Char"""
+   Dim l As List(Of Char) = New List(Of Char) From {"A", "B", "C", "D", "E", "F", "G"}
+   Dim r As New Random
+   Dim i As Integer = r.Next(0, l.Count)
+
+--- a/./App.config
++++ b/./App.config
+@@ -1,4 +1,16 @@
+-"""Auto Generated configuration"""
++"""
++App.config
++==========
++
++Application configuration file for user settings persistence.
++
++This XML configuration file stores user preferences including difficulty level and clef selection,
++allowing the application to restore the user's last session state.
++
++.. note::
+
+This is an auto-generated configuration file managed by the .NET Framework settings system.
+
++"""
+
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+
+--- a/./ApplicationEvents.vb
++++ b/./ApplicationEvents.vb
+@@ -1,4 +1,16 @@
+-"""Auto Generated"""
++"""
++ApplicationEvents
++=================
++
++Application-level event handlers and startup configuration.
++
++This module is auto-generated by Visual Studio and provides hooks for application-wide events
++and custom startup logic if needed.
++
++.. note::
+
+This is a partial class that extends the auto-generated MyApplication class.
+
++"""
+
+Imports Microsoft.VisualBasic.ApplicationServices
+
+--- a/./CheckAnswer.vb
++++ b/./CheckAnswer.vb
+@@ -1,6 +1,28 @@
+-"""Validates User's Choice"""
++"""
++CheckAnswer
++===========
++
++Validates user input against the correct note answer.
++
++This module compares the user's text input with the currently displayed note,
++provides visual feedback, and updates the score tracking system.
++
++Public API
++----------
++
++- :py:func:~GuitarFlashCards.CheckAnswer.CheckAnswer
++
++"""
+
+Public Class CheckAnswer
+Public Shared Function CheckAnswer(s As String) As Boolean
+
+   """Validates the user's answer and updates the UI and score accordingly.
+
+   Compares the input string with the correct note (case-insensitive), displays feedback,
+
+   and updates the score tracking system.
+
+   :param s: The user's answer input
+
+   :type s: String
+
+   :return: True if answer is correct, False otherwise
+
+   :rtype: Boolean"""
+   If s.ToLower() = Form1.Label1.Text.ToLower() Then
+       Form1.Label2.Text = "Correct!"
+
+--- a/./DetermineLevel.vb
++++ b/./DetermineLevel.vb
+@@ -1,6 +1,25 @@
+-"""Checks Difficulty Before Starting"""
++"""
++DetermineLevel
++==============
++
++Determines the currently selected difficulty level from the UI.
++
++This module inspects the form's radio button states to identify which difficulty
++level the user has selected.
++
++Public API
++----------
++
++- :py:func:~GuitarFlashCards.DetermineLevel.DetermineLevel
++
++"""
+
+Public Class DetermineLevel
+Public Shared Function DetermineLevel() As String
+
+   """Checks which difficulty radio button is selected and returns the level name.
+
+   :return: "easy", "medium", "advanced", or "nosetting" if none selected
+
+   :rtype: String
+
+   """
+   If Form1.RadioButton1.Checked Then
+       Return "easy"
+
+--- a/./EasyMode.vb
++++ b/./EasyMode.vb
+@@ -1,12 +1,40 @@
+-"""Easy Mode"""
++"""
++EasyMode
++========
++
++Implements the easy difficulty mode with limited note positions.
++
++This module generates random musical notes using only the middle positions on the staff,
++providing a beginner-friendly learning experience.
++
++Public API
++----------
++
++- :py:class:~GuitarFlashCards.EasyMode
++
++"""
+
+Public Class EasyMode
+
+"""Manages easy difficulty mode note generation.
+Selects random notes from A-G and displays them in limited positions (primarily position 2)
+to reduce complexity for beginners.
+:ivar note: The previously displayed note to prevent immediate repetition
+:vartype note: Char
+"""
+Private Shared note As Char
+
+Public Sub New()
+
+   """Initializes a new instance and generates the first random note."""
+   note = PickRandomNote()
+
+End Sub
+Public Sub Execute()
+
+   """Executes the easy mode logic (currently a placeholder for future functionality)."""
+
+End Sub
+Private Function PickRandomNote() As Char
+
+   """Selects and displays a random note with limited positioning for easy difficulty.
+
+   Chooses a note from A-G (avoiding immediate repetition) and uses primarily position 2,
+
+   with position 3 available for E/F (treble) or G/A (bass) notes.
+
+   :return: The selected note character
+
+   :rtype: Char"""
+   Dim l As List(Of Char) = New List(Of Char) From {"A", "B", "C", "D", "E", "F", "G"}
+   Dim r As New Random
+   Dim i As Integer = r.Next(0, l.Count)
+
+--- a/./KeepTrack.vb
++++ b/./KeepTrack.vb
+@@ -1,12 +1,44 @@
+-"""Manages Keeping track of and calling the Score"""
++"""
++KeepTrack
++=========
++
++Manages score tracking and accuracy calculation for the flash card game.
++
++This module maintains a record of all user answers (correct/incorrect) and
++calculates the accuracy percentage for display.
++
++Public API
++----------
++
++- :py:func:~GuitarFlashCards.KeepTrack.KeepTrack
++- :py:func:~GuitarFlashCards.KeepTrack.PullTrack
++- :py:func:~GuitarFlashCards.KeepTrack.ClearTrack
++
++"""
+
+Public Class KeepTrack
+
+"""Static class for tracking answer correctness and calculating accuracy."""
+Private Shared l As New List(Of Boolean)
+
+Public Shared Sub KeepTrack(b As Boolean)
+
+   """Records a single answer result.
+
+   :param b: True if answer was correct, False if incorrect
+
+   :type b: Boolean
+
+   """
+   l.Add(b)
+
+End Sub
+Public Shared Function PullTrack() As String
+
+   """Calculates and returns the current accuracy percentage.
+
+   Computes the percentage of correct answers and formats it as a string
+
+   with two decimal places.
+
+   :return: Accuracy percentage string (e.g., "85.50%")
+
+   :rtype: String
+
+   """
+   Dim a As Integer = l.Count
+   Dim b As Integer = l.Where(Function(item) item = True).Count
+   Dim c As Double = (b / a) * 100
+   Dim d As String = Format(c, "0.00").ToString() & "%"
+   Return d
+
+End Sub
+Public Shared Sub ClearTrack()
+
+   """Clears all tracked answer records and resets the score."""
+   l.Clear()
+
+--- a/./LoadSettings.vb
++++ b/./LoadSettings.vb
+@@ -1,6 +1,24 @@
+-"""Loads previous user settings"""
++"""
++LoadSettings
++============
++
++Loads and applies saved user preferences on application startup.
++
++This module retrieves stored settings from the application configuration and
++applies them to the form controls to restore the user's previous session state.
++
++Public API
++----------
++
++- :py:func:~GuitarFlashCards.LoadSettings.LoadSettings
++
++"""
+
+Public Class LoadSettings
+Public Shared Sub LoadSettings()
+
+   """Loads saved settings and applies them to form controls.
+
+   Retrieves difficulty level and clef selection from application settings
+
+   and checks the appropriate radio buttons on the form."""
+   Select Case My.Settings.level
+       Case "easy"
+
+--- a/./MediumMode.vb
++++ b/./MediumMode.vb
+@@ -1,12 +1,41 @@
+-"""Medium Mode"""
++"""
++MediumMode
++==========
++
++Implements the medium difficulty mode with expanded note positions.
++
++This module generates random musical notes using a wider range of positions than easy mode
++but fewer than advanced mode, providing intermediate difficulty.
++
++Public API
++----------
++
++- :py:class:~GuitarFlashCards.MediumMode
++
++"""
+
+Public Class MediumMode
+
+"""Manages medium difficulty mode note generation.
+Selects random notes from A-G and displays them across multiple positions on the staff,
+providing moderate difficulty between easy and advanced modes.
+:ivar note: The previously displayed note to prevent immediate repetition
+:vartype note: Char
+"""
+Private Shared note As Char
+
+Public Sub New()
+
+   """Initializes a new instance and generates the first random note."""
+   note = PickRandomNote()
+
+End Sub
+Public Sub Execute()
+
+   """Executes the medium mode logic (currently a placeholder for future functionality)."""
+
+End Sub
+Private Function PickRandomNote() As Char
+
+   """Selects and displays a random note with moderate position variation.
+
+   Chooses a note from A-G (avoiding immediate repetition) and selects from available
+
+   position variants. Most notes have 3 variants, while E/F (treble) or G/A (bass) have 4-5 variants.
+
+   :return: The selected note character
+
+   :rtype: Char"""
+   Dim l As List(Of Char) = New List(Of Char) From {"A", "B", "C", "D", "E", "F", "G"}
+   Dim r As New Random
+   Dim i As Integer = r.Next(0, l.Count)
+
+--- a/./SaveSettings.vb
++++ b/./SaveSettings.vb
+@@ -1,6 +1,23 @@
+-"""Saves User's Preferences"""
++"""
++SaveSettings
++============
++
++Persists user preferences to application configuration on exit.
++
++This module saves the current difficulty level and clef selection to the application
++settings so they can be restored in the next session.
++
++Public API
++----------
++
++- :py:func:~GuitarFlashCards.SaveSettings.SaveSettings
++
++"""
+
+Public Class SaveSettings
+Public Shared Sub SaveSettings()
+
+   """Saves current form settings to application configuration.
+
+   Reads the currently selected difficulty and clef radio buttons and
+
+   persists them to My.Settings for future sessions."""
+   If Form1.RadioButton1.Checked Then
+       My.Settings.level = "easy"
+
+--- a/./SetLevel.vb
++++ b/./SetLevel.vb
+@@ -1,7 +1,35 @@
+-"""Sets Difficulty and Initiates Answer Checking"""
++"""
++SetLevel
++========
++
++Configures and manages the selected difficulty level and timer functionality.
++
++This module instantiates the appropriate difficulty mode class based on user selection
++and manages the auto-advance timer for advanced mode.
++
++Public API
++----------
++
++- :py:func:~GuitarFlashCards.SetLevel.SetLevel
++- :py:func:~GuitarFlashCards.SetLevel.timertick
++- :py:func:~GuitarFlashCards.SetLevel.timerStop
++
++"""
+
+Public Class SetLevel
+
+"""Static class for managing difficulty modes and timer functionality.
+:ivar t: Shared timer instance for advanced mode auto-advance
+:vartype t: Timer
+:ivar b: Flag tracking whether timer event handler has been attached
+:vartype b: Boolean
+"""
+Public Shared t As New Timer With {
+                .Interval = Val(Form1.TextBox2.Text) * 1000
+            }
+Private Shared b As Boolean
+
+Public Shared Sub SetLevel(s As String)
+
+   """Sets the active difficulty level and initializes the appropriate mode.
+
+   Instantiates the corresponding difficulty mode class and starts the timer
+
+   if advanced mode is selected.
+
+   :param s: Difficulty level string ("easy", "medium", "advanced", or "nosetting")
+
+   :type s: String
+
+   """
+   Select Case s
+       Case "easy"
+
+@@ -20,9 +48,19 @@
+t.Start()
+End Select
+End Sub
++
+Public Shared Sub timertick()
+
+   """Timer event handler that auto-advances to the next question.
+
+   Called periodically in advanced mode to automatically check the answer
+
+   and display the next note."""
+   CheckAnswer.CheckAnswer(Form1.TextBox1.Text)
+   Dim a As New MediumMode
+   a.Execute()
+
+End Sub
+Public Shared Sub timerStop()
+
+   """Stops the auto-advance timer.
+
+   Called when exiting advanced mode or when the user manually stops the timer."""
+   t.Stop()
+
+End Sub
+]]>

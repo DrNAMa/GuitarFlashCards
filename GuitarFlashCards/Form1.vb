@@ -83,23 +83,24 @@ Public Class Form1
         If rad.Checked Then
             radname = rad.Name
         End If
+        Dim basePath As String = Application.StartupPath
         'can rename radio buttons to end in the note name, parse 'radiobutton' to get the note name and use it to set the images dynamically.
         If RadioButton4.Checked Then
             Select Case radname
                 Case "RadioButton6"
-                    PictureBox1.Image = Image.FromFile($"CheatNotePics\AS.png")
+                    PictureBox1.Image = Image.FromFile(IO.Path.Combine(basePath, $"CheatNotePics", "AS.png"))
                 Case "RadioButton7"
-                    PictureBox1.Image = Image.FromFile($"CheatNotePics\BS.png")
+                    PictureBox1.Image = Image.FromFile(IO.Path.Combine(basePath, $"CheatNotePics", "BS.png"))
                 Case "RadioButton8"
-                    PictureBox1.Image = Image.FromFile($"CheatNotePics\CS.png")
+                    PictureBox1.Image = Image.FromFile(IO.Path.Combine(basePath, $"CheatNotePics", "CS.png"))
                 Case "RadioButton9"
-                    PictureBox1.Image = Image.FromFile($"CheatNotePics\DS.png")
+                    PictureBox1.Image = Image.FromFile(IO.Path.Combine(basePath, $"CheatNotePics", "DS.png"))
                 Case "RadioButton10"
-                    PictureBox1.Image = Image.FromFile($"CheatNotePics\ES.png")
+                    PictureBox1.Image = Image.FromFile(IO.Path.Combine(basePath, $"CheatNotePics", "ES.png"))
                 Case "RadioButton11"
-                    PictureBox1.Image = Image.FromFile($"CheatNotePics\FS.png")
+                    PictureBox1.Image = Image.FromFile(IO.Path.Combine(basePath, $"CheatNotePics", "FS.png"))
                 Case "RadioButton12"
-                    PictureBox1.Image = Image.FromFile($"CheatNotePics\GS.png")
+                    PictureBox1.Image = Image.FromFile(IO.Path.Combine(basePath, $"CheatNotePics", "GS.png"))
             End Select
         Else
             Select Case radname

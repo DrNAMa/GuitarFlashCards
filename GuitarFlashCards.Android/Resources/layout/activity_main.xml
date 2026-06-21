@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F6FA"
+    android:fillViewport="true">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="#172033"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="@string/app_subtitle"
+        android:textColor="#5B6474"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mode"
+        android:textColor="#172033"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/modeGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+      <RadioButton
+          android:id="@+id/modeEasy"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:checked="true"
+          android:text="@string/easy" />
+
+      <RadioButton
+          android:id="@+id/modeMedium"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="@string/medium" />
+
+      <RadioButton
+          android:id="@+id/modeAdvanced"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="@string/advanced" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/clef"
+        android:textColor="#172033"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/clefGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+      <RadioButton
+          android:id="@+id/clefTreble"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:checked="true"
+          android:text="@string/treble" />
+
+      <RadioButton
+          android:id="@+id/clefBass"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="@string/bass" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:background="@drawable/card_background"
+        android:elevation="3dp">
+
+      <ImageView
+          android:id="@+id/noteImage"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:adjustViewBounds="true"
+          android:contentDescription="Current musical note"
+          android:padding="8dp"
+          android:scaleType="fitCenter" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/feedbackText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:minHeight="30dp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/previousText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/previous_empty"
+        android:textColor="#5B6474" />
+
+    <TextView
+        android:id="@+id/scoreText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="@string/score_empty"
+        android:textColor="#172033"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:text="@string/choose_answer"
+        android:textColor="#5B6474"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/answerButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+      <Button
+          android:id="@+id/answerA"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_weight="1"
+          android:layout_margin="1dp"
+          android:minHeight="0dp"
+          android:minWidth="0dp"
+          android:padding="0dp"
+          android:text="A"
+          android:textSize="18sp" />
+
+      <Button
+          android:id="@+id/answerB"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_weight="1"
+          android:layout_margin="1dp"
+          android:minHeight="0dp"
+          android:minWidth="0dp"
+          android:padding="0dp"
+          android:text="B"
+          android:textSize="18sp" />
+
+      <Button
+          android:id="@+id/answerC"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_weight="1"
+          android:layout_margin="1dp"
+          android:minHeight="0dp"
+          android:minWidth="0dp"
+          android:padding="0dp"
+          android:text="C"
+          android:textSize="18sp" />
+
+      <Button
+          android:id="@+id/answerD"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_weight="1"
+          android:layout_margin="1dp"
+          android:minHeight="0dp"
+          android:minWidth="0dp"
+          android:padding="0dp"
+          android:text="D"
+          android:textSize="18sp" />
+
+      <Button
+          android:id="@+id/answerE"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_weight="1"
+          android:layout_margin="1dp"
+          android:minHeight="0dp"
+          android:minWidth="0dp"
+          android:padding="0dp"
+          android:text="E"
+          android:textSize="18sp" />
+
+      <Button
+          android:id="@+id/answerF"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_weight="1"
+          android:layout_margin="1dp"
+          android:minHeight="0dp"
+          android:minWidth="0dp"
+          android:padding="0dp"
+          android:text="F"
+          android:textSize="18sp" />
+
+      <Button
+          android:id="@+id/answerG"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_weight="1"
+          android:layout_margin="1dp"
+          android:minHeight="0dp"
+          android:minWidth="0dp"
+          android:padding="0dp"
+          android:text="G"
+          android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/advancedControls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+      <EditText
+          android:id="@+id/timerSeconds"
+          android:layout_width="72dp"
+          android:layout_height="48dp"
+          android:inputType="numberDecimal"
+          android:maxLength="5"
+          android:selectAllOnFocus="true"
+          android:singleLine="true"
+          android:text="5.5"
+          android:textAlignment="center" />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="6dp"
+          android:layout_weight="1"
+          android:text="@string/seconds"
+          android:textColor="#5B6474" />
+
+      <Button
+          android:id="@+id/timerButton"
+          android:layout_width="96dp"
+          android:layout_height="48dp"
+          android:text="@string/play" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+      <Button
+          android:id="@+id/clearButton"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_weight="1"
+          android:text="@string/clear" />
+
+      <Button
+          android:id="@+id/cheatButton"
+          android:layout_width="0dp"
+          android:layout_height="48dp"
+          android:layout_marginStart="8dp"
+          android:layout_weight="1"
+          android:text="@string/cheat_sheet" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/deviceSupportText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Android 6.0+ • ARM, ARM64, x64"
+        android:textColor="#7B8493"
+        android:textSize="12sp" />
+  </LinearLayout>
+</ScrollView>
