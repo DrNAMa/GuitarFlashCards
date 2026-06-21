@@ -17,4 +17,26 @@
     -->
     <TrimMode>full</TrimMode>
   </PropertyGroup>
+  <ItemGroup>
+    <AndroidJavaSource Remove="bin\Debug\**" />
+    <AndroidLibrary Remove="bin\Debug\**" />
+    <AndroidNativeLibrary Remove="bin\Debug\**" />
+    <Compile Remove="bin\Debug\**" />
+    <EmbeddedResource Remove="bin\Debug\**" />
+    <JavaSourceJar Remove="bin\Debug\**" />
+    <None Remove="bin\Debug\**" />
+    <ProguardConfiguration Remove="bin\Debug\**" />
+    <TransformFile Remove="bin\Debug\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Release\net10.0-android\GuitarFlashCards.Android.runtimeconfig.json" />
+    <Content Include="bin\Release\net10.0-android\GuitarFlashCards.Android.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Release\net10.0-android\com.guitarflashcards.mobile-Signed.aab" />
+    <None Include="bin\Release\net10.0-android\com.guitarflashcards.mobile-Signed.apk" />
+    <None Include="bin\Release\net10.0-android\com.guitarflashcards.mobile.aab" />
+    <None Include="bin\Release\net10.0-android\GuitarFlashCards.Android.dll" />
+    <None Include="bin\Release\net10.0-android\GuitarFlashCards.Android.pdb" />
+  </ItemGroup>
 </Project>

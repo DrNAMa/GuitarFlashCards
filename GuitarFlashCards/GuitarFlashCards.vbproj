@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin\Release\**" />
+    <EmbeddedResource Remove="bin\Release\**" />
+    <None Remove="bin\Release\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="App.config" />
     <None Remove="BassNotePics\A1.png" />
     <None Remove="BassNotePics\A2.png" />
@@ -106,6 +112,68 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\AA1.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\AA2.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\AA3.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\AA4.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\BB1.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\BB2.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\BB3.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\CC1.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\CC2.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\CC3.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\DD1.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\DD2.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\DD3.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\EE1.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\EE2.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\EE3.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\FF1.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\FF2.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\FF3.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\GG1.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\GG2.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\GG3.png" />
+    <Content Include="bin\Debug\net8.0-windows\BassNotePics\GG4.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatBassNotePics\AAS.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatBassNotePics\BBS.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatBassNotePics\CCS.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatBassNotePics\DDS.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatBassNotePics\EES.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatBassNotePics\FFS.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatBassNotePics\GGS.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatNotePics\AS.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatNotePics\BS.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatNotePics\CS.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatNotePics\DS.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatNotePics\ES.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatNotePics\FS.png" />
+    <Content Include="bin\Debug\net8.0-windows\CheatNotePics\GS.png" />
+    <Content Include="bin\Debug\net8.0-windows\GuitarFlashCards.deps.json" />
+    <Content Include="bin\Debug\net8.0-windows\GuitarFlashCards.runtimeconfig.json" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\A1.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\A2.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\A3.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\B1.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\B2.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\B3.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\C1.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\C2.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\C3.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\D1.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\D2.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\D3.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\E1.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\E2.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\E3.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\E4.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\F1.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\F2.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\F3.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\F4.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\G1.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\G2.png" />
+    <Content Include="bin\Debug\net8.0-windows\NotePics\G3.png" />
     <Content Include="guitar_wallpaper_preview_jW4_icon.ico" />
   </ItemGroup>
 
@@ -300,6 +368,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="bin\Debug\net8.0-windows\GuitarFlashCards.dll" />
+    <None Include="bin\Debug\net8.0-windows\GuitarFlashCards.exe" />
+    <None Include="bin\Debug\net8.0-windows\GuitarFlashCards.pdb" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="My Project\Application.Designer.vb">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -335,6 +409,10 @@
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\net8.0-windows\Resources\" />
   </ItemGroup>
 
 </Project>
