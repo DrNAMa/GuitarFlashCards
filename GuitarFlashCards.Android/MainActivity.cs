@@ -121,6 +121,10 @@ public sealed class MainActivity : Activity
         var card = _game.NextCard(CurrentMode, CurrentClef);
         var resourceId = DrawableId(card.ResourceName);
         _noteImage.SetImageResource(resourceId);
+        if (CurrentMode == GameMode.Advanced)
+        {
+            StartTimer();
+        }
     }
 
     private void GradeRound(char? answer)
@@ -132,7 +136,10 @@ public sealed class MainActivity : Activity
         _feedbackText.SetTextColor(correct ? Color.Rgb(22, 101, 52) : Color.Rgb(185, 28, 28));
         _previousText.Text = $"Previous note: {expected}";
         _scoreText.Text = _game.ScoreText;
-
+        if (CurrentMode == GameMode.Advanced)
+        {
+            StopTimer();
+        }
         ShowNextCard();
     }
 
@@ -149,10 +156,12 @@ public sealed class MainActivity : Activity
         if (_roundTimer is not null)
         {
             StopTimer();
+            _timerButton.SetText(Resource.String.play);
             return;
         }
 
         StartTimer();
+        _timerButton.SetText(Resource.String.stop);
     }
 
     private void StartTimer()
@@ -195,8 +204,7 @@ public sealed class MainActivity : Activity
 
         _roundTimer.Stop();
         _roundTimer.Dispose();
-        _roundTimer = null;
-        _timerButton.SetText(Resource.String.play);
+        _roundTimer = null;       
     }
 
     private void ShowCheatSheet()
