@@ -9,7 +9,7 @@ I hereby release the all images (minus the icon/.ico file) into the Public Domai
 
 Newly added apk for android! (tested on Samsung Galaxy A6)
 
-*Known issue with android's Advanced Mode timer not resetting on note submission - I'll get around to it.
+UPDATE: Android's Advanced Mode timer should be properly functioning now
 
 Its been a long journey for me to learn the treble clef, but by sheer repetition, I've finally been able to get 100/100 notes correct a few times.
 I might have to add a tips section so I can pass on my 'rules' for learning which note is where.
