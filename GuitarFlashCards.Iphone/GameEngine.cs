@@ -1,3 +1,4 @@
+//Iphone App Converted by Gemini
 namespace GuitarFlashCards.Iphone;
 
 public enum GameMode
