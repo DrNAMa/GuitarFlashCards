@@ -181,9 +181,6 @@
 	  <MauiImage Update="Resources\Images\cheat_treble_g.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </MauiImage>
-	  <MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </MauiImage>
 	  <MauiImage Update="Resources\Images\treble_a1.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </MauiImage>
