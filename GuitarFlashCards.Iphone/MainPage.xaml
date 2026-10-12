@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GuitarFlashCards.Iphone.MainPage"
+             Title="Guitar Flash Cards">
+    <ScrollView>
+        <VerticalStackLayout Padding="0" Spacing="0" HorizontalOptions="Center" MaximumWidthRequest="500">
+
+            <!-- Settings: Mode and Clef -->
+            <VerticalStackLayout Spacing="0" HorizontalOptions="Center">
+
+                <!-- Mode Settings -->
+                <VerticalStackLayout>
+                    <Label Text="Mode:" FontAttributes="Bold" FontSize="18" HorizontalOptions="Center" />
+                    <HorizontalStackLayout RadioButtonGroup.GroupName="ModeGroup" Spacing="15" HorizontalOptions="Center" Margin="0,0,0,0">
+                        <RadioButton x:Name="modeEasy" Content="Easy" IsChecked="True" CheckedChanged="OptionsChanged" />
+                        <RadioButton x:Name="modeMedium" Content="Medium" CheckedChanged="OptionsChanged" />
+                        <RadioButton x:Name="modeAdvanced" Content="Advanced" CheckedChanged="OptionsChanged" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <!-- Clef Settings -->
+                <VerticalStackLayout Margin="0,0,0,0">
+                    <Label Text="Clef:" FontAttributes="Bold" FontSize="18" HorizontalOptions="Center" />
+                    <HorizontalStackLayout RadioButtonGroup.GroupName="ClefGroup" Spacing="15" HorizontalOptions="Center" Margin="0,0,0,0">
+                        <RadioButton x:Name="clefTreble" Content="Treble" IsChecked="True" CheckedChanged="OptionsChanged" />
+                        <RadioButton x:Name="clefBass" Content="Bass" CheckedChanged="OptionsChanged" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+            <!-- Timer Controls -->
+            <HorizontalStackLayout x:Name="advancedControls" Spacing="10" IsVisible="False" HorizontalOptions="Center">
+                <Label Text="Timer (sec):" VerticalOptions="Center" />
+                <Entry x:Name="timerSeconds" Text="5.5" Keyboard="Numeric" WidthRequest="70" />
+                <Button x:Name="timerButton" Text="Play" Clicked="ToggleTimer" />
+            </HorizontalStackLayout>
+
+            <!-- Card Image -->
+            <Image x:Name="noteImage" HeightRequest="200" Aspect="AspectFit" />
+
+            <!-- Answer Buttons A-G -->
+            <Grid ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="5" HorizontalOptions="Center">
+                <Button Text="A" Grid.Column="0" Clicked="AnswerClicked" />
+                <Button Text="B" Grid.Column="1" Clicked="AnswerClicked" />
+                <Button Text="C" Grid.Column="2" Clicked="AnswerClicked" />
+                <Button Text="D" Grid.Column="3" Clicked="AnswerClicked" />
+                <Button Text="E" Grid.Column="4" Clicked="AnswerClicked" />
+                <Button Text="F" Grid.Column="5" Clicked="AnswerClicked" />
+                <Button Text="G" Grid.Column="6" Clicked="AnswerClicked" />
+            </Grid>
+
+            <!-- Feedback and Score -->
+            <Label x:Name="feedbackText" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Label x:Name="previousText" Text="Previous note: —" HorizontalOptions="Center" />
+            <Label x:Name="scoreText" Text="Score: —" HorizontalOptions="Center" />
+
+            <!-- Bottom Buttons -->
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                <Button Text="Clear Score" Clicked="ClearScore" BackgroundColor="#b91c1c" TextColor="White" />
+                <Button Text="Cheat Sheet" Clicked="ShowCheatSheet" BackgroundColor="#0284c7" TextColor="White" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
